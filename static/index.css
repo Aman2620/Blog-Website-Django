@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+.navbar {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 55px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.menu-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+#menu-toggle:checked + .menu-icon {
+    color: #4CAF50;
+}
+
+.buttons button {
+    padding: 8px 16px;
+    margin-left: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.login-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.signup-button {
+    background-color: #008CBA;
+    color: white;
+}
+
+.buttons button:hover {
+    background-color: #555;
+}
+.background-image {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("/static/home.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+}
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.get-started-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+        background-color: #2980b9;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    #menu-toggle:checked + .menu-icon {
+        color: white;
+    }
+
+    .buttons {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #333;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .buttons button {
+        margin: 5px 0;
+    }
+
+    #menu-toggle:checked + .menu-icon + .buttons {
+        display: flex;
+    }
+}

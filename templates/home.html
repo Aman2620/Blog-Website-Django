@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+
+    <style>
+        body {
+            overflow-y: auto; /* or overflow-y: scroll; */
+            margin-bottom:30px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Creative<sub>Chronicle</sub>
+        <a href='blogs' class="read-blogs-link" style='font-size:15px; margin-left:25px; text-decoration:none; color:white;'>Read Blogs</a>
+        </div>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <div class="buttons">
+            Welcome {{request.user}}
+            <a href="{% url 'logout' %}"><button type="submit">Logout</button></a>
+        </div>
+
+    </div>
+    <div class="button_plus" onclick="openModal()"></div>
+    <div class="create"><p class="">Create a blog</p></div>
+
+
+<!-- Modal -->
+<div id="modal" class="modal">
+    <form id="blogForm" method='post'>
+        {% csrf_token %}
+        <!-- Your blog form fields go here -->
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+
+        <div class="form-group">
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Submit</button>
+            <button type="button" onclick="closeModal()">Close</button>
+        </div>
+    </form>
+</div>
+
+    <!-- Overlay background -->
+    <div id="overlay" class="overlay" onclick="closeModal()"></div>
+
+    {% for post in saveposts %}
+    <div class="showposts">
+        <h2 class="title">{{ post.title }}</h2>
+        <span>{{ post.author.username }} - {{ post.post_date }}</span>
+        <p class="desc">{{ post.content|truncatewords:50 }}</p>
+
+        <form method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            <input type="hidden" name="delete" value="{{ post.id }}">
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+{% endfor %}
+
+
+    <script>
+        function openModal() {
+            document.getElementById('modal').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+    </script>
+</body>
+</html>

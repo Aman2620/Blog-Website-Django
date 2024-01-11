@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+    <title>{% block title %}{% endblock title %}</title>
+    {% block head %}{% endblock head %}
+</head>
+<body>
+    {% block body %}
+    <div class="navbar">
+        <div class="logo">Creative<sub>Chronicle</sub>
+            <a href='blogs' class="read-blogs-link" style='font-size:15px; margin-left:25px; text-decoration:none; color:white;'>Read Blogs</a>
+        </div>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <div class="buttons">
+           <a href="login" class=""> <button class="login-button">Login</button></a>
+           <a href="register" class=""> <button class="signup-button">Sign Up</button></a>
+        </div>
+    </div>
+
+    {% block backgroundimage %}
+    {% endblock backgroundimage %}
+
+    {% endblock body %}
+</body>
+</html>

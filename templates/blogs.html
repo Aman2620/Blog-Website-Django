@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'blogs.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        {% if request.user.is_authenticated %}
+        <div class="logo">Creative<sub>Chronicle</sub>
+        <a href='home' class="read-blogs-link" style='font-size:15px; margin-left:25px; text-decoration:none; color:white;'>Home</a>
+        </div>
+        {% else %}
+        <div class="logo">Creative<sub>Chronicle</sub></div>
+        {% endif %}
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <div class="buttons">
+        {% if request.user.is_authenticated %}
+            Welcome {{ request.user }}
+            <button type="submit">Logout</button>
+        {% else %}
+            <a href="{% url 'login' %}" class=""><button class="login-button">Login</button></a>
+            <a href="{% url 'register' %}" class=""><button class="signup-button">Sign Up</button></a>
+        {% endif %}
+        </div>
+
+    </div>
+
+    <div class="blog-container">
+        {% for post in blog_posts %}
+            <a href="{% url 'blog_detail' post.id %}" class="blog-card">
+                <!-- Add a link to the detail page with the blog post ID -->
+                <div class="blog-card-content">
+                    <h2 class="title">{{ post.title }}</h2>
+                    <span>{{ post.author.username }} - {{ post.post_date }}</span>
+                    <p class="desc">{{ post.content|truncatewords:50 }}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+
+</body>
+</html>

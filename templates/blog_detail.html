@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'blogs.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Creative<sub>Chronicle</sub>
+            <a href='blogs' class="read-blogs-link" style='font-size:15px; margin-left:25px; text-decoration:none; color:white;'>Read Blogs</a>
+        </div>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <div class="buttons">
+        {% if request.user.is_authenticated %}
+            Welcome {{ request.user }}
+            <a href="{% url 'logout' %}"><button type="submit">Logout</button></a>
+        {% else %}
+            <a href="{% url 'login' %}" class=""><button class="login-button">Login</button></a>
+            <a href="{% url 'register' %}" class=""><button class="signup-button">Sign Up</button></a>
+        {% endif %}
+        </div>
+
+    </div>
+    <div class="content-container">
+        <div class="title">
+            <h1>{{ post.title }}</h1>
+        </div>
+        <div class="author">
+            <span>{{ post.author.username }} - {{ post.post_date }}</span>
+        </div>
+        <div class="content">
+            <p>{{ post.content|linebreaksbr|safe }}</p>
+        </div>
+    </div>
+
+</body>
+</html>

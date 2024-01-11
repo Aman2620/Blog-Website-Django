@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 25px;
+}
+
+.navbar {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 55px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.menu-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+#menu-toggle:checked + .menu-icon {
+    color: #4CAF50;
+}
+
+.buttons button {
+    padding: 8px 16px;
+    margin-left: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.login-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.signup-button {
+    background-color: #008CBA;
+    color: white;
+}
+
+.buttons button:hover {
+    background-color: #555;
+}
+
+.blog-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.blog-card {
+    background-color: rgb(212, 196, 196);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    width: 300px;
+}
+
+.blog-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.blog-author,
+.blog-date {
+    font-size: 14px;
+    color: #555;
+}
+
+.blog-description {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.content-container{
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.blog-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.blog-card > a{
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.blog-card {
+    text-decoration: none;
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    color: black;
+}
+
+.blog-card:hover {
+    transform: scale(1.05);
+}
